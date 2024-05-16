@@ -1,4 +1,4 @@
-# Use the official ROS2 Foxy base image
+# Galactic full
 FROM osrf/ros:galactic-desktop
 
 # Set environment variables
@@ -6,7 +6,7 @@ ENV ROS_DISTRO=galactic
 ENV TURTLEBOT3_MODEL=waffle_pi
 
 
-# Install Nav2 packages
+# Nav2 packages
 RUN apt-get update && apt-get install -y \
     ros-${ROS_DISTRO}-turtlebot3* \
     ros-${ROS_DISTRO}-navigation2 \
@@ -23,7 +23,7 @@ WORKDIR /ros2_unity_ws
 # Copy the workspace source code
 COPY colcon_ws/src src
 
-# Install dependencies and build the workspace
+# Build the workspace
 RUN /bin/bash -c "source /opt/ros/${ROS_DISTRO}/setup.bash && \
     apt-get update && \
     rosdep update && \
