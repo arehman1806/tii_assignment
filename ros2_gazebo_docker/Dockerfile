@@ -1,4 +1,4 @@
-# Use the official ROS2 Foxy base image
+# Galactic full
 FROM osrf/ros:galactic-desktop
 
 # Set environment variables
@@ -6,7 +6,7 @@ ENV ROS_DISTRO=galactic
 ENV TURTLEBOT3_MODEL=waffle_pi
 ENV ROS_DOMAIN_ID=11
 
-# Install Nav2 packages
+# Nav2 packages
 RUN apt-get update && apt-get install -y \
     ros-${ROS_DISTRO}-navigation2 \
     ros-${ROS_DISTRO}-nav2-bringup \
@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean
 
 
-# Install the catkin_pkg Python module, required for building turtlebot3_gazebo package
+# required for building turtlebot3_gazebo package
 RUN pip3 install catkin_pkg
 
 
@@ -29,7 +29,7 @@ WORKDIR /ros2_gazebo_ws
 # Copy the workspace source code
 COPY calcon_ws/src src
 
-# Install dependencies and build the workspace
+# Build the workspace
 RUN /bin/bash -c "source /opt/ros/${ROS_DISTRO}/setup.bash && \
     apt-get update && \
     rosdep update && \
