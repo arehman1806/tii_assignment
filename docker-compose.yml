@@ -1,0 +1,27 @@
+version: '3.7'
+
+services:
+  
+  unity:
+    build: 
+      context: ./ros2_unity_docker
+      dockerfile: Dockerfile
+    container_name: unity_simulation
+    environment:
+      - DISPLAY=${DISPLAY}
+    ports:
+      - "10001:10000"
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix # For GUI forwarding
+    command: bash -c "source /opt/ros/galactic/setup.bash && source /ros2_unity_ws/install/setup.bash && ros2 launch unity_slam_example unity_slam_example.py"
+  gazebo:
+    build: 
+      context: ./ros2_gazebo_docker
+      dockerfile: Dockerfile
+    container_name: gazebo_digital_twin_simulation
+    environment:
+      - DISPLAY=${DISPLAY}
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix # For GUI forwarding
+    # runtime: nvidia
+    command: bash -c "source /opt/ros/galactic/setup.bash && source /ros2_gazebo_ws/install/setup.bash && ros2 launch ros_gazebo digital_twin_slam.py"

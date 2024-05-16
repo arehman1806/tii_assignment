@@ -1,0 +1,61 @@
+# C/C++
+*.o
+*.a
+*.so
+*.exe
+*.dll
+*.dylib
+*.obj
+*.pdb
+*.lib
+*.ilk
+*.exp
+*.idb
+*.DS_Store
+*.class
+
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.eggs/
+*.pip/
+*.wheel/
+.coverage
+*.cover
+.cache/
+.pytest_cache/
+.tox/
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+*.ipynb_checkpoints
+.env
+.venv
+env/
+venv/
+
+# Linux
+*~
+
+# General
+*.log
+*.tmp
+*.bak
+*.swp
+*.lock
+
+
+# Ignore build, install, and log directories
+**/build/
+**/install/
+**/log/
